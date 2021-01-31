@@ -37,13 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'users.apps.UsersConfig',
-    'feedBack.apps.FeedbackConfig'
-=======
+    'feedBack.apps.FeedbackConfig',
     'bus.apps.BusConfig',
     'Booking.apps.BookingConfig',
->>>>>>> 452522b8e49b4294c83f8e9819ed3296adcabe02
 ]
 
 MIDDLEWARE = [

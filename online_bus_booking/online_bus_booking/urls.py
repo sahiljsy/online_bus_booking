@@ -18,11 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-
-=======
     path('bus/', include('bus.urls')),
     path('Booking/', include('Booking.urls')),
-    path('Booking/reservation/', include('Booking.urls'))
->>>>>>> 452522b8e49b4294c83f8e9819ed3296adcabe02
+    path('Booking/reservation/', include('Booking.urls')),
 ]
