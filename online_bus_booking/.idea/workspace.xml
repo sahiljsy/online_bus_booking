@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hellow/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bus/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hellow/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online_bus_booking/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_bus_booking/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/online_bus_booking/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_bus_booking/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,14 +24,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1n0mRyys6VmCfSdZ34Tx1WBmkAw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -32,9 +47,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Booking/templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Booking/templates" />
+      <recent name="$PROJECT_DIR$/bus/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ templates" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
