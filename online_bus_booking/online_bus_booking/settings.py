@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
+    'feedBack.apps.FeedbackConfig',
     'bus.apps.BusConfig',
     'Booking.apps.BookingConfig',
 ]
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'online_bus_booking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
