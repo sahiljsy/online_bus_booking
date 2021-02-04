@@ -1,0 +1,16 @@
+h1
+{
+    color:purple;
+}
+h2
+{
+    color:white;
+}
+p
+{
+    color:blue;
+}
+body {
+    background: white url("image/bus.jpg") no-repeat;
+    background-size: 100%;
+    }
