@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+    <table border="3" align="center" style="width: 60%;" bordercolor="white">
+        <tr align="center">
+            <th><b>Email Address</b></th>
+            <th><b>Ratings</b></th>
+            <th><b>Suggestions</b></th>
+        </tr>
+        {% for feedback in feedback %}
+        <tr align="center">
+            <td>{{feedback.email}}</td>
+            <td>{{feedback.ratings}}</td>
+            <td>{{feedback.suggestions}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="http://127.0.0.1:8000/bus/" class="btn btn-primary"> GO TO BUS PAGE </a>
+{% endblock %}
