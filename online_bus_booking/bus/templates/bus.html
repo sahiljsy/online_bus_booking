@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    {% for b in bus %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ b.bus_number}}</h5>
+                <p class="card-text">
+                    from: {{ b.source }}<br>
+                    to: {{ b.destination }}<br>
+                    price per seat: {{ b.pricePerSeat}} Rs.
+                    </p>
+                <a href="http://127.0.0.1:8000/Booking" class="btn btn-primary">Go To Booking page</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<br><br>
+<a href="http://127.0.0.1:8000/logout/" class="btn btn-primary"><h3>Log Out</h3></a>
+{% endblock  %}
