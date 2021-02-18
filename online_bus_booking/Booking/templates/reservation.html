@@ -3,11 +3,21 @@
 {% block content %}
 
 <body>
-<h1>Reserve Seats</h1>
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Seats Not Found">
-    <div class="card-body">
-        <a href="http://127.0.0.1:8000/Booking/reservation/transaction" class="btn btn-primary">Make Payment</a>
-    </div>
-</div>
-{% endblock %}
+    <h1><u>Reserve Seats</u></h1><br>
+
+    <form class="d-flex" action="http://127.0.0.1:8000/Booking/reservation/transaction" method="POST">{% csrf_token %}
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label class="col-form-label"><b><h5>Number Of Seats:</h5></b></label>
+            </div>
+            <div class="col-auto">
+                <input type="text"  class="form-control" name="numberofseats">
+            </div>
+            <div class="col-12">
+                <br><button type="submit" class="btn btn-dark">Make Payment</button>
+            </div>
+            </div>
+    </form>
+    </body>
+
+    {% endblock %}

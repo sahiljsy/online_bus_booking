@@ -13,4 +13,4 @@ def reservation(request):
 
 
 def transaction(request):
-    return HttpResponse("welcome to transaction page!!")
+    return render(request, 'transaction.html')
