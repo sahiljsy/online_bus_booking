@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.contrib import auth
+from .forms import Registration
 from django.template.context_processors import csrf
 
 
@@ -9,6 +12,7 @@ from django.template.context_processors import csrf
 
 def home(request):
     return render(request, 'index.html')
+
 
 def login(request):
     return render(request, 'login.html')
@@ -40,4 +44,11 @@ def logout(request):
 
 
 def registration(request):
-    return render(request, 'registration.html')
+    if request.method == 'POST':
+        form = Registration(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('http://127.0.0.1:8000/login/')
+    else:
+        form = Registration()
+    return render(request, 'registration.html', {'form': form})
