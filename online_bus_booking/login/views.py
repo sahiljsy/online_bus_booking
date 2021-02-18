@@ -7,6 +7,8 @@ from django.template.context_processors import csrf
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'index.html')
 
 def login(request):
     return render(request, 'login.html')
@@ -19,9 +21,9 @@ def auth_view(request):
 
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/login/loggedin/')
+        return HttpResponseRedirect('/loggedin/')
     else:
-        return HttpResponseRedirect('/login/invalidlogin/')
+        return HttpResponseRedirect('/invalidlogin/')
 
 
 def loggedin(request):
@@ -35,3 +37,7 @@ def invalidlogin(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'logout.html')
+
+
+def registration(request):
+    return render(request, 'registration.html')

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<<<<<<< HEAD
 
 <form method="post">{% csrf_token %}
     <h2 style="color:black">Please enter your login details.</h2><br>
@@ -21,5 +22,16 @@
     <button type="submit" class="btn btn-success">Sign up</button>
         <a href="http://127.0.0.1:8000/login/" class="btn btn-primary">Already have an account?</a>
   </form>
+=======
+{% if form.errors %}
+<p class="error"><h2> Invalid Username or Password </h2></p>
+{% endif %}
+
+<form action="http://127.0.0.1:8000/auth/" method="post">{% csrf_token %}
+    <h2 style="color:black">Please enter your login details.</h2><br>
+    <b>Username :</b> <input type="text" name="username" value="" id="username"><br><br>
+    <b>Password: </b> <input type="password" name="password" value="" id="password"><br><br>
+    <input type="submit" value="Login"/>
+>>>>>>> a0668323dfab52dc49b7a163fe9bee962aa3ecd7
 </form>
 {% endblock %}

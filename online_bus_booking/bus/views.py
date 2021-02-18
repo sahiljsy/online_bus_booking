@@ -4,9 +4,9 @@ from .models import Bus
 # Create your views here.
 
 
-def index(request):
+def bus(request):
     bus = Bus.objects.all()
-    return render(request, 'index.html', {'bus': bus})
+    return render(request, 'bus.html', {'bus': bus})
 
 
 def new(request):

@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<html>
-    <br><head > <h2 align="center"> <u>FEEDBACK FORM </u></h2> </head>
-<body align="center">
+<center>
+<h2> <u>FEEDBACK FORM </u></h2>
+<style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+
+    <form method="POST" action="http://127.0.0.1:8000/feedBack/Greetings/">{% csrf_token %}
+
+        <div class="wrapper">
     <br>
-    Email Address: <input type="text" name="email"><br><br>
-    Ratings: &nbsp; &nbsp; <input type="text" name="ratings"><br><br>
-    Suggestions: <input type="textbox" name="suggestions"><br><br>
-    <input type="submit" name="submit" value="submit">
-</body>
-</html>
+        <div class="form-group ">
+                <label><b><br><h5>Email Address:</h5></b></label>
+                <input type="text" name="email" class="form-control" >
+        </div>
+        <div class="form-group ">
+                <label><b><br><h5>Ratings:</h5></b></label>
+                <input type="text" name="ratings"class="form-control" >
+        </div>
+        <div class="form-group ">
+                <label><b><br><h5>Suggestions:</h5></b></label>
+                <input type="text" name="suggestions" class="form-control" >
+        </div>
+            <br>
+    <input type="submit" name="submit" class="btn btn-warning">
+            </div>
+
+    </form>
+          </center>
 {% endblock %}
