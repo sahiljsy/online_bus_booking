@@ -22,10 +22,11 @@ def auth_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
-
+    context ={}
+    context['username'] = username
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/loggedin/')
+        return render(request,'info.html',context)
     else:
         return HttpResponseRedirect('/invalidlogin/')
 
