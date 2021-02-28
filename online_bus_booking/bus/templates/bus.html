@@ -1,22 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br><br>
 <div class="row">
     {% for b in bus %}
-    <div class="col">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ b.bus_number}}</h5>
-                <p class="card-text">
-                    from: {{ b.source }}<br>
-                    to: {{ b.destination }}<br>
-                    price per seat: {{ b.pricePerSeat}} Rs.
+    {% if b.source == source and b.destination == destination and b.type == type %}
+    <form action="http://127.0.0.1:8000/Booking/" method="POST"> {% csrf_token %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ b.bus_number}}</h5>
+                    <p class="card-text">
+                        from: {{ b.source }}<br>
+                        to: {{ b.destination }}<br>
+                        price per seat: {{ b.pricePerSeat}} Rs.
                     </p>
-                <a href="http://127.0.0.1:8000/Booking" class="btn btn-primary">Go To Booking page</a>
+                    {% with var1=date var2=usrnm%}
+                    <input type="hidden" name="price" value="{{b.pricePerSeat}}">
+                    <input type="hidden" name="id" value="{{b.bus_id}}">
+                    <input type="hidden" name="dates" value="{{var1}}">
+                    <input type="hidden" name="username" value="{{var2}}">
+                    <button type="submit" name="submit" class="btn btn-primary">Go To Booking page</a>
+                    {% endwith %}
+                </div>
             </div>
         </div>
-    </div>
+    </form><br>
+    {% endif %}
     {% endfor %}
 </div>
-{% endblock  %}
+{% endblock %}
