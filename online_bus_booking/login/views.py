@@ -10,8 +10,12 @@ from django.template.context_processors import csrf
 
 # Create your views here.
 
-def home(request):
+def index(request):
     return render(request, 'index.html')
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 def login(request):
@@ -26,7 +30,7 @@ def auth_view(request):
     context['username'] = username
     if user is not None:
         auth.login(request, user)
-        return render(request,'info.html',context)
+        return HttpResponseRedirect('/home/')
     else:
         return HttpResponseRedirect('/invalidlogin/')
 
@@ -37,11 +41,6 @@ def loggedin(request):
 
 def invalidlogin(request):
     return render(request, 'invalidlogin.html')
-
-
-def logout(request):
-    auth.logout(request)
-    return render(request, 'logout.html')
 
 
 def registration(request):
