@@ -17,3 +17,7 @@ def greet(request):
     s = FeedBack(email = semail, ratings=srating, suggestions=ssugg)
     s.save()
     return render(request, 'greetings.html')
+
+
+def aboutUs(request):
+    return render(request, 'about.html')

@@ -8,8 +8,6 @@ def bus(request):
     return render(request, 'info.html')
 
 
-def new(request):
-    return HttpResponse("welcome to new page!!")
 
 def showbus(request):
     bus = Bus.objects.all()
