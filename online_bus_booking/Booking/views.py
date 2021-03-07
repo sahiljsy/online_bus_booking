@@ -4,50 +4,33 @@ from .models import PromoCode, Reservation, Transaction
 from bus.models import Bus
 # Create your views here.
 
-
-def reservation(request):
-    context = {}
-    id = request.POST.get('id', ' ')
-    dates = request.POST.get('dates', ' ')
-    username = request.POST.get('username', ' ')
-    price = request.POST.get('price')
+def index(request):
+    context= {}
+    id = request.POST.get('id',' ')
+    dates = request.POST.get('dates',' ')
+    username = request.POST.get('username',' ')
+    price = request.POST.get('price',' ')
     context['id'] = id
     context['dates'] = dates
     context['username'] = username
     context['price'] = price
-    return render(request, 'reservation.html', context)
+    return render(request, 'reservation.html',context)
+
 
 
 def transaction(request):
-    context_t = {}
-    number_of_tickets = int(request.POST.get('numberofseats'))
+    number_of_tickets = int(request.POST.get('numberofseats', ''))
     id = request.POST.get('id', '')
     dateofjourney = request.POST.get('dates', '')
     usernm = request.POST.get('username', '')
-    price = int((request.POST.get('price')))
-    paymentMeth = request.POST.get('payMeth', '')
-    b = Bus.objects.get(bus_id=id)
-    context_t['bus_id'] = b.bus_id
-    context_t['bus_number'] = b.bus_number
-    context_t['doj'] = dateofjourney
-    context_t['price'] = price
-    ava_seat = b.available_seat
-    if (number_of_tickets > 0) and (number_of_tickets <= ava_seat):
-        amnt = price*number_of_tickets
-        ava_seat = ava_seat - number_of_tickets
-        Bus.objects.filter(bus_id=id).update(available_seat=ava_seat)
-        s = Reservation(numberOfTicket=number_of_tickets, dateOfJourney=dateofjourney, bus_id=id)
-        s.save()
-        t = Transaction(username=usernm, date=dateofjourney, amount=amnt, payment_method=paymentMeth, refund_amount=0)
-        t.save()
-        context_t['transaction_id'] = t.id
-        context_t['reservation_id'] = s.id
-        context_t['amount'] = amnt
-        context_t['no_of_ticket'] = number_of_tickets
-        return render(request, 'transaction.html', context_t)
-    else:
-        context_t['no_error'] = "Entered Number of seats are not available"
-        return render(request, 'reservation.html', context_t)
+    price = int((request.POST.get('price', '')))
+    paymentMeth=request.POST.get('payMeth','')
+    amnt = price*number_of_tickets
+    s = Reservation(numberOfTicket = number_of_tickets, dateOfJourney=dateofjourney, bus_id=id)
+    s.save()
+    t = Transaction(username=usernm,date=dateofjourney,amount=amnt,payment_method=paymentMeth,refund_amount=0)
+    t.save()
+    return render(request, 'transaction.html')
 
 
 def cancelticket(request):
