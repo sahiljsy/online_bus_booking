@@ -62,14 +62,15 @@
                     <p class="card-text">
                         from: {{ b.source }}<br>
                         to: {{ b.destination }}<br>
-                        price per seat: {{ b.pricePerSeat}} Rs.
+                        price per seat: {{ b.pricePerSeat}} Rs.<br>
+                        Available Seat : {{ b.available_seat}}
                     </p>
                     {% with var1=date var2=usrnm%}
                     <input type="hidden" name="price" value="{{b.pricePerSeat}}">
                     <input type="hidden" name="id" value="{{b.bus_id}}">
                     <input type="hidden" name="dates" value="{{var1}}">
                     <input type="hidden" name="username" value="{{var2}}">
-                    <button type="submit" name="submit" class="btn btn-primary">Book Seats</a>
+                    <button type="submit" name="submit" class="btn btn-primary">Book Seats</button>
                     {% endwith %}
                 </div>
             </div>

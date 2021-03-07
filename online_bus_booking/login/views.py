@@ -46,7 +46,7 @@ def invalidlogin(request):
 
 def registration(request):
     if request.method == 'POST':
-        form = Registration(request.POST)
+        form = Registration(request.POST or None)
         if form.is_valid():
             form.save()
             return redirect('http://127.0.0.1:8000/login/')
