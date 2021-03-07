@@ -3,7 +3,7 @@ from .models import Bus
 
 
 class BusAdmin(admin.ModelAdmin):
-    list_display = ('bus_id', 'bus_number', 'type', 'source', 'destination', 'no_of_seats', 'dep_time', 'arr_time', 'pricePerSeat')
+    list_display = ('bus_id', 'bus_number', 'type', 'source', 'destination', 'no_of_seats', 'dep_time', 'arr_time', 'pricePerSeat', 'available_seat')
 
 
 admin.site.register(Bus, BusAdmin)

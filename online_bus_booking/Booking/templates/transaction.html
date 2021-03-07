@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,6 +45,34 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
     <h1> PAYMENT SUCCESSFUL</h1>
+    <table class="table table-striped table table-dark" width="50%">
+        <tbody>
+        <tr>
+            <td><b>Ticket no:</b></td>
+            <td>{{ ticket_no }}</td>
+        </tr>
+        <tr>
+            <td><b>Transaction id:</b></td>
+            <td>{{ transaction_id }}</td>
+        </tr>
+        <tr>
+            <td><b>Bus number:</b></td>
+            <td>{{ bus_number }}</td>
+        </tr>
+        <tr>
+            <td><b>No of Seats:</b></td>
+            <td>{{ numberofseats }}</td>
+        </tr>
+        <tr>
+            <td><b>Total amount:</b></td>
+            <td>{{ amount }}</td>
+        </tr>
+        <tr>
+            <td><b>Date of journey:</b></td>
+            <td>{{ dates }}</td>
+        </tr>
+        </tbody>
+    </table>
 <a href="http://127.0.0.1:8000/bus/" class="btn btn-danger">PRINT TICKET</a>
 <a href="http://127.0.0.1:8000/home/" class="btn btn-primary">HOME</a>
 </div>

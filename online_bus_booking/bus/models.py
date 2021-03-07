@@ -13,7 +13,7 @@ class Bus(models.Model):
     dep_time = models.TimeField()
     arr_time = models.TimeField()
     pricePerSeat = models.IntegerField()
-
+    available_seat = models.IntegerField(null='False', default=0)
 
 
 
