@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Booking/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Booking/templates/cancelTicket.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Booking/templates/refund.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/templates/reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/templates/reservation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/templates/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/templates/transaction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/templates/bus.html" beforeDir="false" afterPath="$PROJECT_DIR$/bus/templates/bus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/bus/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
