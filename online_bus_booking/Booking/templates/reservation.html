@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,53 +8,48 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>BUS BOOKING</title>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/home/">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/home/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="d-flex" action="http://127.0.0.1:8000" method="POST">{% csrf_token %}
-                <button class="btn btn-outline-success" type="submit">Logout</button>
-            </form>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
-    <h1><u>Reserve Seats</u></h1>
-    <br><br>
-    <form class="d-flex" action="http://127.0.0.1:8000/Booking/reservation/transaction" method="POST">{% csrf_token %}
-        <div class="row g-3 align-items-center">
-            <div class="col-auto">
-                <label class="col-form-label"><b>
-                        <h5>Number Of Seats:</h5>
-                    </b></label>
+                <form class="d-flex" action="http://127.0.0.1:8000" method="POST">{% csrf_token %}
+                    <button class="btn btn-outline-success" type="submit">Logout</button>
+                </form>
             </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" name="numberofseats">
-            </div><br>
-
-            <br><br><h5>Please select payment method from below options:</h5><br>
-            <class= "container-sm">
-            <select class="form-select" name="payMeth" aria-label="Default select example">
-                <option selected>Debit Card</option>
-                <option value="Credit Card">Credit card</option>
-                <option value="Net Banking">Net Banking</option>
-                <option value="UPI">UPI</option>
-              </select>
-              </class>
-
+        </div>
+    </nav>
+    <div class="container">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+        <h1><u>Reserve Seats</u></h1>
+        <br><br>
+        <form method="POST">{% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                <b style="color:white">{{ field.help_text }}</b>
+                {% endif %}
+                {% for error in field.errors %}
+                {% if field.errors %}
+             <p style="color: red">{{ error }}</p>
+             {% endif %}
+            {% endfor %}
+            </p>
+            {% endfor %}
             {% with var2=dates var3=id var4=username var5=price%}
             <div class="col-12">
                 <input type="hidden" name="dates" value="{{var2}}">
@@ -63,23 +59,25 @@
                 <br><button type="submit" class="btn btn-warning">Make Payment</button>
             </div>
             {% endwith %}
-        </div>
-    </form>
-</div>
+    </div>
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    </form>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 -->
-<!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>

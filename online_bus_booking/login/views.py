@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from .forms import Registration
 from django.template.context_processors import csrf
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -52,3 +53,32 @@ def registration(request):
     else:
         form = Registration()
     return render(request, 'registration.html', {'form': form})
+    
+def displaydetails(request):
+    if request.method == 'POST':
+        usrnm = request.POST.get('usernm',' ')
+        eml=request.POST.get('email',' ')
+        firstnm=request.POST.get('first',' ')
+        lastnm=request.POST.get('last',' ')
+        user= request.user.id
+        User.objects.filter(id = user).update(username=usrnm,email=eml,first_name=firstnm,last_name=lastnm)
+        return render(request, 'confirmupdate.html')
+    else:
+        return render(request, 'displaydetails.html')
+
+def showconfirmation(request):
+    usrnm = request.POST.get('usernm',' ')
+    eml=request.POST.get('email',' ')
+    firstnm=request.POST.get('first',' ')
+    lastnm=request.POST.get('last',' ')
+    user= request.user.id
+    t = User.objects.filter(id = user).update(username=usrnm,email=eml,first_name=firstnm,last_name=lastnm)
+    return render(request, 'confirmupdate.html')
+
+def deleteaccount(request):
+    return render(request, 'deleteaccount.html')
+
+def accountdeleted(request):
+    user= request.user.id
+    User.objects.filter(id = user).delete()
+    return redirect('http://127.0.0.1:8000/login/')

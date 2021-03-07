@@ -3,7 +3,7 @@ from .models import PromoCode, Reservation, Transaction
 
 
 class PromoCodeAdmin(admin.ModelAdmin):
-    list_display = ('code', 'discount', 'description')
+    list_display = ('code', 'discount', 'description','numberoftickets')
 
 
 class ReservationAdmin(admin.ModelAdmin):
