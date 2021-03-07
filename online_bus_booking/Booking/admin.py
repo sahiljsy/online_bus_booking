@@ -7,11 +7,11 @@ class PromoCodeAdmin(admin.ModelAdmin):
 
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('numberOfTicket', 'dateOfJourney', 'bus_id')
+    list_display = ('id', 'numberOfTicket', 'dateOfJourney', 'bus_id')
 
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ('date', 'amount', 'payment_method', 'refund_amount')
+    list_display = ('id', 'username', 'date', 'amount', 'payment_method', 'refund_amount')
 
 
 admin.site.register(PromoCode, PromoCodeAdmin)

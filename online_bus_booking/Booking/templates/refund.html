@@ -31,41 +31,9 @@
 <div class="container">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
-    <h1><u>Reserve Seats</u></h1>
+    <h1><u>Tickets are canceled and refund has generated</u></h1>
     <br><br>
-    <form class="d-flex" action="http://127.0.0.1:8000/Booking/reservation/transaction" method="POST">{% csrf_token %}
-        <div class="row g-3 align-items-center">
-            <div class="col-auto">
-                <label class="col-form-label"><b>
-                        <h5>Number Of Seats:</h5>
-                    </b></label>
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" name="numberofseats" required>
-                <b><span style="color:red">{{ no_error }} </span></b>
-            </div><br>
 
-            <br><br><h5>Please select payment method from below options:</h5><br>
-            <class= "container-sm">
-            <select class="form-select" name="payMeth" aria-label="Default select example" required>
-                <option selected>Debit Card</option>
-                <option value="Credit Card">Credit card</option>
-                <option value="Net Banking">Net Banking</option>
-                <option value="UPI">UPI</option>
-              </select>
-              </class>
-
-            {% with var2=dates var3=id var4=username var5=price%}
-            <div class="col-12">
-                <input type="hidden" name="dates" value="{{var2}}">
-                <input type="hidden" name="id" value="{{var3}}">
-                <input type="hidden" name="username" value="{{var4}}">
-                <input type="hidden" name="price" value="{{var5}}">
-                <br><button type="submit" class="btn btn-warning">Make Payment</button>
-            </div>
-            {% endwith %}
-        </div>
-    </form>
 </div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

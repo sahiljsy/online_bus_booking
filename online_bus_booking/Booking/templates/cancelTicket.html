@@ -31,39 +31,36 @@
 <div class="container">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
-    <h1><u>Reserve Seats</u></h1>
+    <h1><u>Enter your ticket details:</u></h1>
     <br><br>
-    <form class="d-flex" action="http://127.0.0.1:8000/Booking/reservation/transaction" method="POST">{% csrf_token %}
+    <form class="d-flex" action="http://127.0.0.1:8000/Booking/cancelTicket/refund" method="POST">{% csrf_token %}
         <div class="row g-3 align-items-center">
             <div class="col-auto">
                 <label class="col-form-label"><b>
-                        <h5>Number Of Seats:</h5>
+                        <h5 style="color:yellow">Ticket id:</h5>
                     </b></label>
+                <input type="text" class="form-control" name="ticketid" required>
+                <b><span style="color:red">{{ ticket_error}}</span></b>
+                <br>
+                <label class="col-form-label"><b>
+                        <h5 style="color:yellow">Transaction id:</h5>
+                    </b></label>
+
+                <input type="text" class="form-control" name="transactionid" required>
+                 <b><span style="color:red">{{ pay_error}}</span></b>
+                <br>
+                <label class="col-form-label"><b>
+                        <h5 style="color:yellow">No of Seats:</h5>
+                    </b></label>
+
+                <input type="text" class="form-control" name="noofseats" required>
+                 <b><span style="color:red">{{ no_error }}</span></b>
+                <br>
             </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" name="numberofseats" required>
-                <b><span style="color:red">{{ no_error }} </span></b>
-            </div><br>
-
-            <br><br><h5>Please select payment method from below options:</h5><br>
-            <class= "container-sm">
-            <select class="form-select" name="payMeth" aria-label="Default select example" required>
-                <option selected>Debit Card</option>
-                <option value="Credit Card">Credit card</option>
-                <option value="Net Banking">Net Banking</option>
-                <option value="UPI">UPI</option>
-              </select>
-              </class>
-
-            {% with var2=dates var3=id var4=username var5=price%}
             <div class="col-12">
-                <input type="hidden" name="dates" value="{{var2}}">
-                <input type="hidden" name="id" value="{{var3}}">
-                <input type="hidden" name="username" value="{{var4}}">
-                <input type="hidden" name="price" value="{{var5}}">
-                <br><button type="submit" class="btn btn-warning">Make Payment</button>
+                <br><button type="submit" class="btn btn-danger">Cancel Ticket</button>
             </div>
-            {% endwith %}
+
         </div>
     </form>
 </div>

@@ -30,7 +30,7 @@ def auth_view(request):
     context['username'] = username
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/home/')
+        return HttpResponseRedirect('/home/', context)
     else:
         return HttpResponseRedirect('/invalidlogin/')
 
@@ -45,7 +45,7 @@ def invalidlogin(request):
 
 def registration(request):
     if request.method == 'POST':
-        form = Registration(request.POST)
+        form = Registration(request.POST or None)
         if form.is_valid():
             form.save()
             return redirect('http://127.0.0.1:8000/login/')

@@ -22,9 +22,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/bus/">Bus Reservation</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
                 </li>
@@ -57,19 +55,19 @@
     <center>
     <form action="http://127.0.0.1:8000/bus/showbus" method="post"> {% csrf_token %}
         <h3>Source</h3>
-        <select name="source">
+        <select name="source" required>
             <option value="Ahmedabad">Ahmedabad</option>
             <option value="Vadodara">Vadodara</option>
             <option value="Surat">Surat</option>
         </select><br><br>
         <h3>Destination</h3>
-        <select name="destination">
+        <select name="destination" required>
             <option value="Ahmedabad">Ahmedabad</option>
             <option value="Vadodara">Vadodara</option>
             <option value="Surat">Surat</option>
         </select><br><br>
         <h3>Bus Type</h3>
-        <select name="type">
+        <select name="type" required>
             <option value="Volvo">Volvo</option>
             <option value="AC">A/c</option>
             <option value="Express">Express</option>
@@ -78,7 +76,7 @@
         {% with var=username%}
         <input type="hidden" name="usrnm" value="{{var}}">
         <h3>Date of journey</h3><br>
-        <input type="date" name="date"><br><br>
+        <input type="date" name="date" required><br><br>
         <input type="submit" name="submit" class="btn btn-success" />
         {% endwith %}
     </form>

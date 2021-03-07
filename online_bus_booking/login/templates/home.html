@@ -6,48 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>BUS BOOKING</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/bus/">Bus Reservation</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Feedback
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View feedback</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/">Give Feedback</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <form class="d-flex" action="http://127.0.0.1:8000" method="POST">{% csrf_token %}
-                <button class="btn btn-outline-success" type="submit">Logout</button>
-            </form>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Bus Booking</a>
         </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="http://127.0.0.1:8000/home/">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View Feedback</a></li>
+                    <li><a href="http://127.0.0.1:8000/feedBack/">GiveFeedback</a></li>
+                </ul>
+            </li>
+            <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:8000"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
-    <h1> Welcome To Bus Booking Web Site!!!</h1>
+    <div class="container-fluid ">
+        <div class="row content">
+            {% if user.is_superuser %}
+
+            <div class="btn-group-vertical">
+                <a href="http://127.0.0.1:8000/admin/auth/user/" class="btn btn-warning" role="button">profile</a><br>
+                <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
+                <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel Reservation</a><br>
+                <a href="http://127.0.0.1:8000/admin/Booking/reservation/" class="btn btn-warning" role="button">See  Reservation</a><br>
+                <a href="http://127.0.0.1:8000/admin/Booking/transaction/" class="btn btn-warning" role="button">See Transactions</a><br>
+                <a href="http://127.0.0.1:8000/admin/bus/bus/" class="btn btn-warning" role="button">see Bus</a><br>
+                <a href="http://127.0.0.1:8000/admin/bus/bus/add/" class="btn btn-warning" role="button">Add bus</a><br>
+            </div>
+            <div class="col-sm-8 ">
+                <h1>
+                    <p>Hello, Admin {{username}}</p>
+                </h1>
+                <hr>
+            </div>
+        </div>
+        {% else %}
+
+        <div class="btn-group-vertical">
+            <a href="#" class="btn btn-warning" role="button">view profile</a><br>
+            <a href="#" class="btn btn-warning" role="button">Update profile</a><br>
+            <a href="#" class="btn btn-warning" role="button">Delete Account</a><br>
+            <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
+            <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel
+                Reservation</a><br>
+        </div>
+        <div class="col-sm-8 ">
+            <h1>
+                <p>Welcome {{ username }}</p>
+            </h1>
+            <hr>
+        </div>
+        {% endif %}
+    </div>
+
 </div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
