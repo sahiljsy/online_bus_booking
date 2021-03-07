@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/feedBack/templates/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/templates/booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/templates/booking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/templates/reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/templates/reservation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Booking/templates/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/Booking/templates/transaction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/templates/bus.html" beforeDir="false" afterPath="$PROJECT_DIR$/bus/templates/bus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/bus/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedBack/templates/feedBack.html" beforeDir="false" afterPath="$PROJECT_DIR$/feedBack/templates/feedBack.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedBack/templates/greetings.html" beforeDir="false" afterPath="$PROJECT_DIR$/feedBack/templates/greetings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedBack/templates/viewFeedBack.html" beforeDir="false" afterPath="$PROJECT_DIR$/feedBack/templates/viewFeedBack.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedBack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feedBack/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedBack/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feedBack/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/invalidlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/invalidlogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/logout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" />
-    </list>
+    <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
