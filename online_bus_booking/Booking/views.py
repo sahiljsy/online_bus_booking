@@ -11,38 +11,35 @@ from django.contrib.auth import logout
 
 @login_required(login_url="http://127.0.0.1:8000/login")
 def index(request):
-    context = {}
-    id = request.POST.get('id', None)
-    dates = request.POST.get('dates', None)
+    context= {}
+    bus_id = request.POST.get('id',None)
+    dates = request.POST.get('dates',None)
     username = request.POST.get('username')
-    price = request.POST.get('price', 0)
-    context['id'] = id
+    price = request.POST.get('price',0)
+    context['id'] = bus_id
     context['dates'] = dates
     context['username'] = username
     context['price'] = price
     form = ReserveTickets()
     if request.method == 'POST':
-        form = ReserveTickets(request.POST)
+        form = ReserveTickets(request.POST, bus_id=bus_id)
         if form.is_valid():
             print('Form Validated.')
             numberofseats = form.cleaned_data.get('numberofseats')
             payMeth = form.cleaned_data.get('payMeth')
             promocode = form.cleaned_data.get('promocode')
-            context['promocode'] = promocode
-            context['numberofseats'] = numberofseats
-            context['payMeth'] = payMeth
+            context['promocode']=promocode
+            context['numberofseats']=numberofseats
+            context['payMeth']=payMeth
             global getdictionary
-
             def getdictionary():
                 return context
-
             context['form'] = form
             return redirect(transaction)
         else:
             print(form.errors)
-    context['form'] = form
-    return render(request, 'reservation.html', context)
-
+        context['form'] = form
+        return render(request, 'reservation.html',context)
 
 @login_required(login_url="http://127.0.0.1:8000/login")
 def transaction(request):
@@ -55,11 +52,16 @@ def transaction(request):
     price = int(context['price'])
     paymentMeth = context['payMeth']
     promocode = context['promocode']
-    obj = PromoCode.objects.get(code=promocode)
-    disc = obj.__getattribute__('discount')
+    # print(promocode)
+    if promocode is None :
+        # print("inside")
+        disc = 0
+    else:
+        obj = PromoCode.objects.get(code=promocode)
+        disc = obj.__getattribute__('discount')
     # print(id,number_of_tickets,price,promocode,obj,disc)
     amnt = price * number_of_tickets * (1 - disc)
-    s = Reservation(numberOfTicket=number_of_tickets, dateOfJourney=dateofjourney, bus_id=id, username=usernm)
+    s = Reservation(username=usernm, numberOfTicket=number_of_tickets, dateOfJourney=dateofjourney, bus_id=id)
     s.save()
     t = Transaction(username=usernm, date=dateofjourney, amount=amnt, payment_method=paymentMeth, refund_amount=0)
     t.save()

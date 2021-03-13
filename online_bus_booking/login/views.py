@@ -56,17 +56,12 @@ def registration(request):
 
 
 @login_required(login_url="http://127.0.0.1:8000/login")
+def updatedetails(request):
+    return render(request, 'updatedetails.html')
+
+@login_required(login_url="http://127.0.0.1:8000/login")
 def displaydetails(request):
-    if request.method == 'POST':
-        usrnm = request.POST.get('usernm', ' ')
-        eml = request.POST.get('email', ' ')
-        firstnm = request.POST.get('first', ' ')
-        lastnm = request.POST.get('last', ' ')
-        user = request.user.id
-        User.objects.filter(id=user).update(username=usrnm, email=eml, first_name=firstnm, last_name=lastnm)
-        return render(request, 'confirmupdate.html')
-    else:
-        return render(request, 'displaydetails.html')
+    return render(request, 'displaydetails.html')
 
 
 @login_required(login_url="http://127.0.0.1:8000/login")
