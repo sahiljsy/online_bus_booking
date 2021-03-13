@@ -9,6 +9,7 @@ class PromoCode(models.Model):
 
 
 class Reservation(models.Model):
+    username = models.CharField(null=False, max_length=25)
     numberOfTicket = models.IntegerField(blank=True,default=0)
     dateOfJourney = models.DateField(null=True)
     bus_id = models.IntegerField(null=True)

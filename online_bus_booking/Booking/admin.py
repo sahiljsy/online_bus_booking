@@ -3,11 +3,11 @@ from .models import PromoCode, Reservation, Transaction
 
 
 class PromoCodeAdmin(admin.ModelAdmin):
-    list_display = ('code', 'discount', 'description','numberoftickets')
+    list_display = ('code', 'discount', 'description', 'numberoftickets')
 
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'numberOfTicket', 'dateOfJourney', 'bus_id')
+    list_display = ('id', 'username', 'numberOfTicket', 'dateOfJourney', 'bus_id')
 
 
 class TransactionAdmin(admin.ModelAdmin):

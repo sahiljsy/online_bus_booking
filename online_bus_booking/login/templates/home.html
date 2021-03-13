@@ -7,18 +7,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>BUS BOOKING</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse " >
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bus Booking</a>
-        </div>
+
         <ul class="nav navbar-nav">
-            <li class="active"><a href="http://127.0.0.1:8000/home/">Home</a></li>
+            <li class="active" style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
+                    class="material-icons">home</i></a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
                     <span class="caret"></span></a>
@@ -30,7 +30,35 @@
             <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:8000"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="material-icons">person</i>
+                    <span class="caret"></span></a>
+                {% if user.is_superuser %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/bus">Book Ticket</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
+                    Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/add/">add bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/transaction/">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% else %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/bus">Book Tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% endif %}
+            </li>
         </ul>
     </div>
 </nav>
@@ -40,37 +68,18 @@
     <div class="container-fluid ">
         <div class="row content">
             {% if user.is_superuser %}
-
-            <div class="btn-group-vertical">
-                <a href="http://127.0.0.1:8000/admin/auth/user/" class="btn btn-warning" role="button">profile</a><br>
-                <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
-                <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel Reservation</a><br>
-                <a href="http://127.0.0.1:8000/admin/Booking/reservation/" class="btn btn-warning" role="button">See  Reservation</a><br>
-                <a href="http://127.0.0.1:8000/admin/Booking/transaction/" class="btn btn-warning" role="button">See Transactions</a><br>
-                <a href="http://127.0.0.1:8000/admin/bus/bus/" class="btn btn-warning" role="button">see Bus</a><br>
-                <a href="http://127.0.0.1:8000/admin/bus/bus/add/" class="btn btn-warning" role="button">Add bus</a><br>
-            </div>
             <div class="col-sm-8 ">
                 <h1>
-                    <p>Hello, Admin {{username}}</p>
+                    <p>Hello, Admin {{ user.username }}</p>
                 </h1>
                 <hr>
             </div>
         </div>
         {% else %}
 
-        <div class="btn-group-vertical">
-            <a href="http://127.0.0.1:8000/home/updatedetails" class="btn btn-warning" role="button">view profile</a><br>
-            <a href="http://127.0.0.1:8000/home/updatedetails" class="btn btn-warning" role="button">Update profile</a><br>
-            <a href="http://127.0.0.1:8000/home/deleteaccount" class="btn btn-warning" role="button">Delete Account</a><br>
-            <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
-            <a href="http://127.0.0.1:8000/Booking/viewTicket" class="btn btn-warning" role="button">view tickets</a><br>
-            <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel
-                Reservation</a><br>
-        </div>
         <div class="col-sm-8 ">
             <h1>
-                <p>Welcome {{ username }}</p>
+                <p>Welcome {{ user.username }}</p>
             </h1>
             <hr>
         </div>
