@@ -1,14 +1,17 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Bus
+from django.contrib.auth import logout
 # Create your views here.
 
 
+@login_required(login_url="http://127.0.0.1:8000/login")
 def bus(request):
     return render(request, 'info.html')
 
 
-
+@login_required(login_url="http://127.0.0.1:8000/login")
 def showbus(request):
     bus = Bus.objects.all()
     context= {}

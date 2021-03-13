@@ -1,19 +1,21 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import PromoCode, Reservation, Transaction
 from .forms import ReserveTickets
 from bus.models import Bus
+from django.contrib.auth import logout
 
 
 # Create your views here.
 
-
+@login_required(login_url="http://127.0.0.1:8000/login")
 def index(request):
-    context= {}
-    id = request.POST.get('id',None)
-    dates = request.POST.get('dates',None)
+    context = {}
+    id = request.POST.get('id', None)
+    dates = request.POST.get('dates', None)
     username = request.POST.get('username')
-    price = request.POST.get('price',0)
+    price = request.POST.get('price', 0)
     context['id'] = id
     context['dates'] = dates
     context['username'] = username
@@ -26,27 +28,30 @@ def index(request):
             numberofseats = form.cleaned_data.get('numberofseats')
             payMeth = form.cleaned_data.get('payMeth')
             promocode = form.cleaned_data.get('promocode')
-            context['promocode']=promocode
-            context['numberofseats']=numberofseats
-            context['payMeth']=payMeth
+            context['promocode'] = promocode
+            context['numberofseats'] = numberofseats
+            context['payMeth'] = payMeth
             global getdictionary
+
             def getdictionary():
                 return context
+
             context['form'] = form
             return redirect(transaction)
         else:
             print(form.errors)
     context['form'] = form
-    return render(request, 'reservation.html',context)
+    return render(request, 'reservation.html', context)
 
 
+@login_required(login_url="http://127.0.0.1:8000/login")
 def transaction(request):
     context = getdictionary()
     number_of_tickets = int(context['numberofseats'])
     id = context['id']
     # id = request.POST.get('id', '')
     dateofjourney = context['dates']
-    usernm = context['username']
+    usernm = request.user.username
     price = int(context['price'])
     paymentMeth = context['payMeth']
     promocode = context['promocode']
@@ -54,7 +59,7 @@ def transaction(request):
     disc = obj.__getattribute__('discount')
     # print(id,number_of_tickets,price,promocode,obj,disc)
     amnt = price * number_of_tickets * (1 - disc)
-    s = Reservation(numberOfTicket=number_of_tickets, dateOfJourney=dateofjourney, bus_id=id)
+    s = Reservation(numberOfTicket=number_of_tickets, dateOfJourney=dateofjourney, bus_id=id, username=usernm)
     s.save()
     t = Transaction(username=usernm, date=dateofjourney, amount=amnt, payment_method=paymentMeth, refund_amount=0)
     t.save()
@@ -69,13 +74,17 @@ def transaction(request):
     return render(request, 'transaction.html', context)
 
 
+@login_required(login_url="http://127.0.0.1:8000/login")
 def cancelticket(request):
     return render(request, 'cancelTicket.html')
 
 
+@login_required(login_url="http://127.0.0.1:8000/login")
 def viewticket(request):
     return render(request, 'viewTicket.html')
 
+
+@login_required(login_url="http://127.0.0.1:8000/login")
 def refund(request):
     error = {}
     ticketid = int(request.POST.get('ticketid', ''))
@@ -107,6 +116,7 @@ def refund(request):
         return render(request, 'cancelTicket.html', error)
 
 
+@login_required(login_url="http://127.0.0.1:8000/login")
 def downloadticket(request):
     error = {}
     details = {}
@@ -130,3 +140,17 @@ def downloadticket(request):
     except Transaction.DoesNotExist:
         error['pay_error'] = "Invalid Transaction details"
         return render(request, 'viewTicket.html', error)
+
+
+@login_required(login_url="http://127.0.0.1:8000/login")
+def userTransactions(request):
+    context = {}
+    username = request.user.username
+    user_detail = {'username': username}
+    reservation = Reservation.objects.all()
+    trans = Transaction.objects.all()
+    context['reservation'] = reservation
+    context['username'] = username
+    context['transaction'] = trans
+
+    return render(request, 'usertransaction.html', context)

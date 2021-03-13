@@ -17,7 +17,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
                 </li>
@@ -33,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
     <form action="http://127.0.0.1:8000/login/auth/" method="post">{% csrf_token %}
     <h2 style="color:black">Please enter your login details.</h2><br>
+        <h3 style="color:red">{{ invalid_error}}</h3><br>
     <b>Username :</b> <input type="text" name="username" value="" id="username"><br><br>
     <b>Password: </b> <input type="password" name="password" value="" id="password"><br><br>
     <input type="submit" value="Login" class="btn btn-success"/>

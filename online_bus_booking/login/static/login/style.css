@@ -14,7 +14,9 @@ p
 {
     color:blue;
 }
-body {
+body
+{
     background: white url("image/bus.jpg") no-repeat;
     background-size: 100%;
-    }
+}
+
