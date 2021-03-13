@@ -1,78 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>User Details</title>
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>BUS BOOKING</title>
+    <style>
+        input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 10px;
+  background-color: #291F1B;
+  padding: 20px;
+  width: 520px;
+  border: 5px outset gray;
+}
+
+
+.col-75 {
+  float: none;
+  width: 35%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+    </style>
+</head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/bus/">Bus Reservation</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Feedback
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View
-                                    feedback</a>
-                                <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/">Give Feedback</a>
-                            </div>
-                        </div>
-                    </li>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active" style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
+                    class="material-icons">home</i></a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View Feedback</a></li>
+                    <li><a href="http://127.0.0.1:8000/feedBack/">GiveFeedback</a></li>
                 </ul>
-                <form class="d-flex" action="http://127.0.0.1:8000" method="POST">{% csrf_token %}
-                    <button class="btn btn-outline-success" type="submit">Logout</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <div class="container-md">
-        <h1><u>Details</u></h1><br>
+            </li>
+            <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="material-icons">person</i>
+                    <span class="caret"></span></a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/bus">Book Tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <center>
+        <h1 style="color:white"><u>Details</u></h1><br>
         {%if request.method == 'POST'%}
-        <h3>User Details Updated.</h3>
+        <h3 style="color:white">User Details Updated.</h3>
         {% endif %}
         <form method="POST"> {% csrf_token %}
-        
-            <div class="mb-3">
-                <label class="form-label">Username:</label>
-                <input type="text" class="form-control" name="usernm" value="{{user.username}}">
+            <div class="row">
+                <div class="col-75">
+                    <label class="form-label" style="color:white">Username:</label>
+                    <input type="text" class="form-control" name="usernm" value="{{user.username}}">
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Email Address:</label>
-                <input type="text" class="form-control" name="email" value="{{user.email}}">
+            <div class="row">
+                <div class="col-75">
+                    <label class="form-label" style="color:white">Email Address:</label>
+                    <input type="text" class="form-control" name="email" value="{{user.email}}">
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">First Name:</label>
-                <input type="text" class="form-control" name="first" value="{{user.first_name}}">
+            <div class="row">
+                <div class="col-75">
+                    <label class="form-label" style="color:white">First Name:</label>
+                    <input type="text" class="form-control" name="first" value="{{user.first_name}}">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Last Name:</label>
-                <input type="text" class="form-control" name="last" value="{{user.last_name}}">
-            </div><br>
-            <button type="submit" class="btn btn-dark">Update</button>
-            <a href="http://127.0.0.1:8000/home/" class="btn btn-primary">Back To Home Page</a>
+            <div class="row">
+                <div class="col-75">
+                    <label for="exampleFormControlInput1" class="form-label" style="color:white">Last Name:</label>
+                    <input type="text" class="form-control" name="last" value="{{user.last_name}}">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button type="submit" class="btn btn-danger">Update details</button>
+
+            </div>
         </form>
-    </div>
+    </center>
+</div>
 </body>
 
 </html>

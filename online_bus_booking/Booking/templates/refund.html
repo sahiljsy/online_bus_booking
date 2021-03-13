@@ -36,9 +36,9 @@
                 <ul class="dropdown-menu">
                     <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/bus">Book Ticket</a></li>
-                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
                     Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/bus/bus/add/">add bus</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/Booking/transaction/">see transactions</a></li>
@@ -48,9 +48,9 @@
                 <ul class="dropdown-menu">
                     <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/bus">Book Tickets</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
-                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
                     <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
                 </ul>
@@ -59,14 +59,27 @@
         </ul>
     </div>
 </nav>
+<div class="container">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
+    <h1><u>Tickets are canceled and refund has generated</u></h1>
     <br><br>
-    <center>
-    <h1>Are you sure you want to delete your account?</h1><br><br>
-    <form method="POST" action="http://127.0.0.1:8000/home/deleted"> {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes, I am sure</button>
-        <a href="http://127.0.0.1:8000/home/" class="btn btn-success">No</a>
-    </form>
-</center>
-</body>
 
+</div>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+-->
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>
+
+</body>
 </html>

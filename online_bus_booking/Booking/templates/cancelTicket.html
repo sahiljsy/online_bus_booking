@@ -11,18 +11,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>BUS BOOKING</title>
+      <style>
+
+
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 10px;
+  background-color: #050404;
+  padding: 20px;
+  width: 520px;
+  border: 5px outset gray;
+}
+
+
+.col-75 {
+  float: none;
+  width: 35%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li  style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
+            <li class="active" style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
                     class="material-icons">home</i></a></li>
-            <li class="dropdown" class="active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >FeedBack
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View Feedback</a></li>
+                    <li><a href="http://127.0.0.1:8000/feedBack/">GiveFeedback</a></li>
                 </ul>
             </li>
             <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
@@ -35,9 +87,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/bus">Book Ticket</a></li>
-                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
-                    Reservation</a></li>
+                        Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/bus/bus/add/">add bus</a></li>
@@ -51,7 +102,6 @@
                     <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/bus">Book Tickets</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
-                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
                     <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
                 </ul>
@@ -60,16 +110,52 @@
         </ul>
     </div>
 </nav>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
+<center>
+<h1><u>Enter your ticket details:</u></h1>
+<br><br>
+
 <div class="container">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
-    <h1> Thank you for giving your feedback.</h1>
-    <form >
-        <a class="btn btn-primary" href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View
-                                feedback</a>
+    <form class="d-flex" action="http://127.0.0.1:8000/Booking/cancelTicket/refund" method="POST">{% csrf_token %}
+        <div class="row ">
+            <div class="col-75">
+                <label><b>
+                    <h3 style="color:white">Ticket id:</h3>
+                </b></label>
+                <input type="text" name="ticketid" required>
+                <b><span style="color:red">{{ ticket_error}}</span></b>
+                <br>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-75">
+                <label class="col-form-label"><b>
+                    <h3 style="color:white">Transaction id:</h3>
+                </b>
+                </label>
+                <input type="text" name="transactionid" required>
+                <b><span style="color:red">{{ pay_error}}</span></b>
+                <br>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-75">
+                <label class="col-form-label"><b>
+                    <h3 style="color:white">No of Seats:</h3>
+                </b></label>
+                <input type="text" name="noofseats" required>
+                <b><span style="color:red">{{ no_error }}</span></b>
+                <br>
+            </div>
+        </div>
+        <div class="row ">
+            <br>
+            <button type="submit" class="btn btn-danger">Cancel Ticket</button>
+        </div>
     </form>
 </div>
-
+</center>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

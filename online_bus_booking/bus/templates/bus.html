@@ -6,78 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <title>BUS BOOKING</title>
+    <style>
+        .container {
+  border-radius: 5px;
+  background-color: #e6ffe6;
+  width: 18rem;
+  border: 5px outset gray;
+}
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/Home/">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Feedback
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View feedback</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/feedBack/">Give Feedback</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <form class="d-flex" action="http://127.0.0.1:8000" method="POST">{% csrf_token %}
-                <button class="btn btn-outline-success" type="submit">Logout</button>
-            </form>
-        </div>
+        <ul class="nav navbar-nav">
+            <li class="active" style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
+                    class="material-icons">home</i></a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View Feedback</a></li>
+                    <li><a href="http://127.0.0.1:8000/feedBack/">GiveFeedback</a></li>
+                </ul>
+            </li>
+            <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="material-icons">person</i>
+                    <span class="caret"></span></a>
+                {% if user.is_superuser %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
+                        Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/add/">add bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/transaction/">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% else %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% endif %}
+            </li>
+        </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
     <br><br>
 
-<div class="row">
-    {% for b in bus %}
-    {% if b.source == source and b.destination == destination and b.type == type %}
-    <form action="http://127.0.0.1:8000/Booking/" method="POST"> {% csrf_token %}
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ b.bus_number}}</h5>
-                    <p class="card-text">
-                        from: {{ b.source }}<br>
-                        to: {{ b.destination }}<br>
-                        price per seat: {{ b.pricePerSeat}} Rs.
-                    </p>
-                    {% with var1=date var2=usrnm%}
-                    <input type="hidden" name="price" value="{{b.pricePerSeat}}">
-                    <input type="hidden" name="id" value="{{b.bus_id}}">
-                    <input type="hidden" name="dates" value="{{var1}}">
-                    <input type="hidden" name="username" value="{{var2}}">
-                    <button type="submit" name="submit" class="btn btn-primary">Book Seats</a>
-                    {% endwith %}
+    <div class="row">
+        {% for b in bus %}
+        {% if b.source == source and b.destination == destination and b.type == type %}
+        <form action="http://127.0.0.1:8000/Booking/" method="POST"> {% csrf_token %}
+           <div class="container" >
+
+                    <img src="..."  alt="...">
+
+                        <h5 >{{ b.bus_number}}</h5>
+                        <p >
+                            from: {{ b.source }}<br>
+                            to: {{ b.destination }}<br>
+                            price per seat: {{ b.pricePerSeat}} Rs.<br>
+                            Available Seat : {{ b.available_seat}}
+                        </p>
+                        {% with var1=date var2=usrnm%}
+                        <input type="hidden" name="price" value="{{b.pricePerSeat}}">
+                        <input type="hidden" name="id" value="{{b.bus_id}}">
+                        <input type="hidden" name="avail_seats" value="{{ b.available_seat}}">
+                        <input type="hidden" name="dates" value="{{var1}}">
+                        <input type="hidden" name="username" value="{{var2}}">
+                        <button type="submit" name="submit" class="btn btn-primary">Book Seats</button>
+                        {% endwith %}
+
                 </div>
-            </div>
-        </div>
-    </form><br>
-    {% endif %}
-    {% endfor %}
-</div>
+
+        </form>
+        <br>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
