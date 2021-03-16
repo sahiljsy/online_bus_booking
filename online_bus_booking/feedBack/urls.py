@@ -1,10 +1,12 @@
 from django.urls import path
-from feedBack.views import giveFeedBack,viewFeedBack,greet
+from feedBack.views import giveFeedBack, viewFeedBack, greet, aboutUs, help_
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 
 urlpatterns = [
     path('', giveFeedBack),
     path('ViewFeedBack/', viewFeedBack),
-    path('Greetings/', greet)
+    path('Greetings/', greet),
+    path('about/', aboutUs),
+    path('help/', help_),
 ]
