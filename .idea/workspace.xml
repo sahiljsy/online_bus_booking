@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2fb9298-7fe4-4358-b5e8-25ab287dac40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/online_bus_booking/login/templates/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/online_bus_booking/login/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_bus_booking/login/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/online_bus_booking/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_bus_booking/login/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="e2fb9298-7fe4-4358-b5e8-25ab287dac40" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,5 +70,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
