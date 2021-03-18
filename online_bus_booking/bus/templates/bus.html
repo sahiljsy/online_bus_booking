@@ -15,12 +15,51 @@
 
     <title>BUS BOOKING</title>
     <style>
-        .container {
-  border-radius: 5px;
-  background-color: #e6ffe6;
-  width: 18rem;
-  border: 5px outset gray;
+        @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@300;400&display=swap');
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+
 }
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 2px 4px 10px 0 white;
+  padding: 16px;
+  text-align: left;
+  background-color:black;
+  opacity: .90;
+  height: 200px;
+  width: 200px;
+   border-radius: 9px;
+   border: 2px;
+}
+.image img{
+	border-radius: 50%;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -47,7 +86,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
-                    <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/">See
                         Reservation</a></li>
                     <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
@@ -57,7 +96,7 @@
                 </ul>
                 {% else %}
                 <ul class="dropdown-menu">
-                    <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/displaydetails">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
                     <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
@@ -76,30 +115,29 @@
     <br><br>
 
     <div class="row">
+
         {% for b in bus %}
         {% if b.source == source and b.destination == destination and b.type == type %}
         <form action="http://127.0.0.1:8000/Booking/" method="POST"> {% csrf_token %}
-           <div class="container" >
-
-                    <img src="..."  alt="...">
-
-                        <h5 >{{ b.bus_number}}</h5>
-                        <p >
-                            from: {{ b.source }}<br>
-                            to: {{ b.destination }}<br>
-                            price per seat: {{ b.pricePerSeat}} Rs.<br>
-                            Available Seat : {{ b.available_seat}}
-                        </p>
-                        {% with var1=date var2=usrnm%}
-                        <input type="hidden" name="price" value="{{b.pricePerSeat}}">
-                        <input type="hidden" name="id" value="{{b.bus_id}}">
-                        <input type="hidden" name="avail_seats" value="{{ b.available_seat}}">
-                        <input type="hidden" name="dates" value="{{var1}}">
-                        <input type="hidden" name="username" value="{{var2}}">
-                        <button type="submit" name="submit" class="btn btn-primary">Book Seats</button>
-                        {% endwith %}
-
+            <div class="column">
+                <div class="card">
+                    <h4 style="color:red">{{ b.bus_number}}</h4>
+                    <p style="color:white">
+                        from: {{ b.source }}<br>
+                        to: {{ b.destination }}<br>
+                        price per seat: {{ b.pricePerSeat}} Rs.<br>
+                        Available Seat : {{ b.available_seat}}
+                    </p>
+                    {% with var1=date var2=usrnm%}
+                    <input type="hidden" name="price" value="{{b.pricePerSeat}}">
+                    <input type="hidden" name="id" value="{{b.bus_id}}">
+                    <input type="hidden" name="avail_seats" value="{{ b.available_seat}}">
+                    <input type="hidden" name="dates" value="{{var1}}">
+                    <input type="hidden" name="username" value="{{var2}}">
+                    <button type="submit" name="submit" class="btn btn-primary">Book Seats</button>
+                    {% endwith %}
                 </div>
+            </div>
 
         </form>
         <br>
