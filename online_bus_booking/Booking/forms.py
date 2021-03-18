@@ -1,4 +1,8 @@
 from django import forms
+
+from .models import Reservation, Transaction
+
+
 from .models import PromoCode
 from bus.models import Bus
 

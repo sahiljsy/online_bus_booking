@@ -11,6 +11,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>BUS BOOKING</title>
+    <style>
+table
+{
+	width: 90%;
+	background-color: white;
+}
+th
+{
+	height: 50px;
+	border: 1px solid ;
+	padding: 8px;
+	background-color: black;
+	color:white;
+}
+tr:nth-child(even)
+{
+    background-color: #ffe6e6;
+    height: 50px;
+	border: 3px solid ;
+	padding: 8px;
+}
+td
+{
+	border: 3px solid ;
+	padding: 8px;
+}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -47,7 +74,7 @@
                 </ul>
                 {% else %}
                 <ul class="dropdown-menu">
-                    <li><a href="http://127.0.0.1:8000/home/updatedetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/displaydetails">view profile</a></li>
                     <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
                     <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
                     <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
