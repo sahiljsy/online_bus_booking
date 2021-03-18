@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/bus/">Bus Reservation</a>
+            <a class="navbar-brand" href="#">Bus Reservation</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -27,8 +27,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/feedBack">Feedback</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/feedBack/about">About US</a>
+                    </li>
                 </ul>
-                <form class="d-flex" action="http://127.0.0.1:8000/registration/" method="POST">{% csrf_token %}
+                <form class="d-flex" action="http://127.0.0.1:8000/registration/" >{% csrf_token %}
                     <button class="btn btn-outline-success" type="submit">Register</button>&nbsp;
                 </form>
                 <form class="d-flex" action="http://127.0.0.1:8000/login/" method="POST">{% csrf_token %}

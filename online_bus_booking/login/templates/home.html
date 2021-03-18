@@ -7,18 +7,75 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
     <title>BUS BOOKING</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@300;400&display=swap');
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 2px 4px 10px 0 white;
+  padding: 16px;
+  text-align: center;
+  background-color:black;
+  opacity: .90;
+  height: 275px;
+   border-radius: 9px;
+   border: 2px;
+}
+.image img{
+	border-radius: 50%;
+}
+.footer
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-shadow:1px 2px red;
+	text-align: right;
+}
+
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse " >
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bus Booking</a>
-        </div>
+
         <ul class="nav navbar-nav">
-            <li class="active"><a href="http://127.0.0.1:8000/home/">Home</a></li>
+            <li class="active" style="background-color: #4CAF50;"><a href="http://127.0.0.1:8000/home/"><i
+                    class="material-icons">home</i></a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
                     <span class="caret"></span></a>
@@ -30,7 +87,35 @@
             <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:8000"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="material-icons">person</i>
+                    <span class="caret"></span></a>
+                {% if user.is_superuser %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/admin/auth/user/">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/bus">Book Ticket</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/reservation/" >See
+                    Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/">see bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/bus/bus/add/">add bus</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/Booking/transaction/">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% else %}
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/home/displaydetails">view profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/updatedetails">Update profile</a></li>
+                    <li><a href="http://127.0.0.1:8000/home/deleteaccount">Delete Account</a></li>
+                    <li><a href="http://127.0.0.1:8000/bus">Book Tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/viewTicket">view tickets</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/cancelTicket">Cancel Reservation</a></li>
+                    <li><a href="http://127.0.0.1:8000/Booking/usertransaction">see transactions</a></li>
+                    <li><a href="http://127.0.0.1:8000/logout"><i class="material-icons">logout</i></a></li>
+                </ul>
+                {% endif %}
+            </li>
         </ul>
     </div>
 </nav>
@@ -40,43 +125,66 @@
     <div class="container-fluid ">
         <div class="row content">
             {% if user.is_superuser %}
-
-            <div class="btn-group-vertical">
-                <a href="http://127.0.0.1:8000/admin/auth/user/" class="btn btn-warning" role="button">profile</a><br>
-                <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
-                <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel Reservation</a><br>
-                <a href="http://127.0.0.1:8000/admin/Booking/reservation/" class="btn btn-warning" role="button">See  Reservation</a><br>
-                <a href="http://127.0.0.1:8000/admin/Booking/transaction/" class="btn btn-warning" role="button">See Transactions</a><br>
-                <a href="http://127.0.0.1:8000/admin/bus/bus/" class="btn btn-warning" role="button">see Bus</a><br>
-                <a href="http://127.0.0.1:8000/admin/bus/bus/add/" class="btn btn-warning" role="button">Add bus</a><br>
-            </div>
             <div class="col-sm-8 ">
                 <h1>
-                    <p>Hello, Admin {{username}}</p>
+                    <p>Hello, Admin {{ user.username }}</p>
                 </h1>
                 <hr>
             </div>
         </div>
         {% else %}
 
-        <div class="btn-group-vertical">
-            <a href="#" class="btn btn-warning" role="button">view profile</a><br>
-            <a href="#" class="btn btn-warning" role="button">Update profile</a><br>
-            <a href="#" class="btn btn-warning" role="button">Delete Account</a><br>
-            <a href="http://127.0.0.1:8000/bus" class="btn btn-warning" role="button">Book Tickets</a><br>
-            <a href="http://127.0.0.1:8000/Booking/cancelTicket" class="btn btn-warning" role="button">Cancel
-                Reservation</a><br>
-        </div>
         <div class="col-sm-8 ">
             <h1>
-                <p>Welcome {{ username }}</p>
+                <b><p style="color:black">Welcome {{ user.username }}</p></b>
             </h1>
             <hr>
         </div>
         {% endif %}
     </div>
+    </div>
+<br><br><br>
+    <div class="row">
+  <div class="column">
+    <div class="card">
+        <div class='image'>
+            <a href="http://127.0.0.1:8000/bus"><img src="{% static 'login/image/booking.png' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>Book ticket</h3>
+    </div>
+  </div>
 
+  <div class="column">
+    <div class="card">
+        <div class='image'>
+            <a href="http://127.0.0.1:8000/Booking/cancelTicket"><img src="{% static 'login/image/cancel.jpeg' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>Cancel Tickets</h3>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        <div class='image'>
+            <a href="http://127.0.0.1:8000/Booking/viewTicket"><img src="{% static 'login/image/ticket.jpeg' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>View Tickets</h3>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        <div class='image'>
+           <a href="http://127.0.0.1:8000/home/updatedetails"><img src="{% static 'login/image/profile.jpeg' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>Update Profile</h3>
+    </div>
+  </div>
 </div>
+<div class="footer">
+    	<!--<h1 style="text-shadow:2px 2px red"> Life is one grand, sweet song, so start the music.🎶️</h1>-->
+    	<h4 style="text-shadow:2px 2px red">🚌️ ©️copyrights and terms and conditions applied </h4>
+    </div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
