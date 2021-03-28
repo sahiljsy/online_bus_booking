@@ -10,6 +10,34 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .container {
+            position: absolute;
+            right: 0px;
+            width: 700px;  
+        }
+
+        form {
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            padding: 30px;
+            width: 70%;
+            max-width: 400px;
+            position: relative;
+            -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        input[type=text],select,input[type=number]{
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
     <title>BUS BOOKING</title>
 </head>
 <body>
@@ -71,7 +99,6 @@
             {{ field.label_tag }}<br>
             {{ field }}
             {% if field.help_text %}
-            <b style="color:white">{{ field.help_text }}</b>
             {% endif %}
             {% for error in field.errors %}
             {% if field.errors %}
@@ -87,7 +114,7 @@
             <input type="hidden" name="username" value="{{var4}}">
             <input type="hidden" name="price" value="{{var5}}">
             <br>
-            <button type="submit" class="btn btn-warning">Make Payment</button>
+            <center><button type="submit" class="btn btn-success">Make Payment</button></center>
         </div>
         {% endwith %}
 

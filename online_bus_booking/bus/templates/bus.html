@@ -49,10 +49,10 @@
   text-align: left;
   background-color:black;
   opacity: .90;
-  height: 200px;
-  width: 200px;
-   border-radius: 9px;
-   border: 2px;
+  height: 240px;
+  width: 220px;
+  border-radius: 9px;
+  border: 2px;
 }
 .image img{
 	border-radius: 50%;
@@ -125,6 +125,8 @@
                     <p style="color:white">
                         from: {{ b.source }}<br>
                         to: {{ b.destination }}<br>
+                        departure time:  {{b.dep_time}}<br>
+                        arrival time: {{b.arr_time}}<br>
                         price per seat: {{ b.pricePerSeat}} Rs.<br>
                         Available Seat : {{ b.available_seat}}
                     </p>
@@ -134,13 +136,11 @@
                     <input type="hidden" name="avail_seats" value="{{ b.available_seat}}">
                     <input type="hidden" name="dates" value="{{var1}}">
                     <input type="hidden" name="username" value="{{var2}}">
-                    <button type="submit" name="submit" class="btn btn-primary">Book Seats</button>
+                    <center><button type="submit" name="submit" class="btn btn-primary">Book Seats</button></center>
                     {% endwith %}
                 </div>
             </div>
-
         </form>
-        <br>
         {% endif %}
         {% endfor %}
     </div>
