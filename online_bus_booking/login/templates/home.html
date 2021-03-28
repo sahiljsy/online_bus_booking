@@ -154,6 +154,16 @@
     </div>
   </div>
 
+  {% if user.is_superuser %}
+  <div class="column">
+    <div class="card">
+        <div class='image'>
+            <a href="http://127.0.0.1:8000/admin/Booking/promocode/"><img src="{% static 'login/image/promocode.jpg' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>Manage Promocode</h3>
+    </div>
+  </div>
+  {% else %}
   <div class="column">
     <div class="card">
         <div class='image'>
@@ -162,8 +172,19 @@
       <h3>Cancel Tickets</h3>
     </div>
   </div>
+  {% endif %}
 
+  {% if user.is_superuser %}
   <div class="column">
+    <div class="card">
+        <div class='image'>
+            <a href="http://127.0.0.1:8000/admin/bus/bus/add/"><img src="{% static 'login/image/add_bus.jpg' %}" class='center' width='200' height='200'></a>
+        </div>
+      <h3>Add Bus</h3>
+    </div>
+  </div>
+  {% else %}
+    <div class="column">
     <div class="card">
         <div class='image'>
             <a href="http://127.0.0.1:8000/Booking/viewTicket"><img src="{% static 'login/image/ticket.jpeg' %}" class='center' width='200' height='200'></a>
@@ -171,6 +192,7 @@
       <h3>View Tickets</h3>
     </div>
   </div>
+  {% endif %}
 
   <div class="column">
     <div class="card">

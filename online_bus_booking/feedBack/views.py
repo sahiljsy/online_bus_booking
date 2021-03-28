@@ -20,12 +20,25 @@ def viewFeedBack(request):
 
 @login_required(login_url="http://127.0.0.1:8000/login")
 def greet(request):
+    error = {}
     semail = request.POST.get('email', '')
-    srating = request.POST.get('ratings', '')
+    rating = request.POST.get('ratings')
+    if rating == '':
+        error['ratings'] = "No Ratings given."
+        return render(request, 'feedBack.html', error)
+    try:
+        srating = int(rating)
+    except:
+        error['ratings'] = "Invalid Ratings given.It should be from 1 to 5"
+        return render(request, 'feedBack.html', error)
     ssugg = request.POST.get('suggestions', '')
-    s = FeedBack(email=semail, ratings=srating, suggestions=ssugg)
-    s.save()
-    return render(request, 'greetings.html')
+    if srating < 0 or srating > 5:
+        error['ratings'] = "Invalid Ratings given."
+        return render(request, 'feedBack.html', error)
+    else:
+        s = FeedBack(email=semail, ratings=srating, suggestions=ssugg)
+        s.save()
+        return render(request, 'greetings.html')
 
 
 def aboutUs(request):
