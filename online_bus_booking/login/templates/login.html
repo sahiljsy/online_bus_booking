@@ -1,17 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<!doctype html>
-<html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <title>BUS BOOKING</title>
     <style>
@@ -19,13 +22,16 @@
                 background: rgba(203, 204, 202, 0.815) url("login_background.jpg") no-repeat;
                 background-size: 100%;
             } */
+        .container {
+            position: absolute;
+            right: 0px;
+            width: 700px;  
+        }
 
         body {
-            background-color: #56baed;
             font-family: "Poppins", sans-serif;
             height: 100vh;
         }
-
         h1 {
             color: rgb(255, 255, 255);
             font-family: Arial, Helvetica, sans-serif;
@@ -57,41 +63,54 @@
             box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
             text-align: center;
         }
+
+        input[type=text], input[type=password] {
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+    <nav class="navbar navbar-inverse " >
+    <div class="container-fluid">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a>
-                    </li>
+        <ul class="nav navbar-nav">
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeedBack
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://127.0.0.1:8000/feedBack/ViewFeedBack/">View Feedback</a></li>
+                    <li><a href="http://127.0.0.1:8000/feedBack/">GiveFeedback</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-    <br>
+            </li>
+            <li><a class="nav-link" href="http://127.0.0.1:8000/feedBack/about/">About US</a></li>
+        </ul>
+    </div>
+</nav>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
     <center>
         <h1>Online Bus Booking</h1>
-        <hr><br>
-        <div class="container">
-            <br>
-            <!-- {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/> -->
-            <form action="http://127.0.0.1:8000/login/auth/" method="post">{% csrf_token %}<br>
-                <h2>LOGIN HERE</h2><br>
-                <h3 style="color:red">{{ invalid_error}}</h3><br>
-                <b>Username :</b> <input type="text" name="username" value="" id="username"><br><br>
-                <b>Password: </b> <input type="password" name="password" value="" id="password"><br><br>
-                <a href="http://127.0.0.1:8000/resetpassword/">Forget Password?</a><br><br>
-                <input type="submit" value="Login" class="btn btn-success" />&nbsp;
-                <a href="http://127.0.0.1:8000/registration/" class="btn btn-primary">New on site?</a><br><br>
-            </form>
-        </div>
+        <hr>
     </center>
+    <div class="container">
+        <br><br><br>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+        <form action="http://127.0.0.1:8000/login/auth/" method="post">{% csrf_token %}<br>
+            <h2>LOGIN HERE</h2>
+            <h3 style="color:red">{{ invalid_error}}</h3><br>
+            <b>Username :</b> <input type="text" name="username" value="" id="username"><br><br>
+            <b>Password: </b> <input type="password" name="password" value="" id="password"><br><br>
+            <a href="http://127.0.0.1:8000/resetpassword/">Forget Password?</a><br><br>
+            <input type="submit" value="Login" class="btn btn-success" />&nbsp;
+            <a href="http://127.0.0.1:8000/registration/" class="btn btn-primary">New on site?</a><br><br>
+        </form>
+    </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

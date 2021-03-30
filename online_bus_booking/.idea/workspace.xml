@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="" />
+=======
     <list default="true" id="88f0bfda-fd75-408c-b479-b57afd631497" name="Default Changelist" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -47,6 +50,7 @@
       <change beforePath="$PROJECT_DIR$/online_bus_booking/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_bus_booking/settings.py" afterDir="false" />
 >>>>>>> 12ef29df478afee05bea5bb50b5aa7486361601e
     </list>
+>>>>>>> 12ef29df478afee05bea5bb50b5aa7486361601e
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,8 +59,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -82,7 +86,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$/feedBack/templates" />
+>>>>>>> 12ef29df478afee05bea5bb50b5aa7486361601e
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

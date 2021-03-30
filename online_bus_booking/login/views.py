@@ -34,7 +34,7 @@ def auth_view(request):
     context = {'username': username}
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/home/')
+        return HttpResponseRedirect('/home/', context)
     else:
         con = {'invalid_error': "Invalid details of login"}
         return render(request, 'login.html', con)

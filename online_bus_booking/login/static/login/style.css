@@ -1,6 +1,6 @@
 h1
 {
-    color:purple;
+    color:black;
 }
 h2
 {
@@ -16,10 +16,36 @@ h3
 p
 {
     color:black;
+<<<<<<< HEAD
+=======
+
+}
+table
+{
+	width: 90%;
+}
+th
+{
+	height: 50px;
+	border: 3px solid ;
+	padding: 8px;
+}
+tr
+{
+	height: 50px;
+	border: 3px solid ;
+	padding: 8px;
+}
+td
+{
+	border: 3px solid ;
+	padding: 8px;
+>>>>>>> 11519fc45cfeffebd973558a77aa962d376a840b
 }
 body
 {
     background: white url("image/bus.jpg") no-repeat;
     background-size: 100%;
 }
+
 
